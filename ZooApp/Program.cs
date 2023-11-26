@@ -869,10 +869,10 @@
                 Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Вольер тигров", 4);
                 Enclosure<Jaguar> jaguarEnclosure = new Enclosure<Jaguar>("Вольер ягуаров", 4);
 
-                // Create an instance of the XML serializer for ZooSerializationModel
+                // Создание объекта XML-сериализатора
                 var xmlSerializer = new XmlSerializer<ZooSerializationModel>();
 
-                // Deserialize the zoo data from the XML file
+                // Десериализация из файла zoopark.xml
                 ZooSerializationModel zooModel = xmlSerializer.Deserialize("zoopark.xml");
 
                 foreach (var animal in zooModel.AllAnimalsEnclosure)
