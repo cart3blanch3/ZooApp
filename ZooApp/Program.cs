@@ -173,51 +173,6 @@
         }
     }
 
-    // Класс, представляющий миску для еды животного
-    [Serializable]
-    public class Bowl
-    {
-        // Свойства миски
-        public FoodType BowlFood { get; set; }   // Тип пищи в миске
-        public int CurrentAmount { get; set; }   // Текущее количество еды в миске
-        public int Capacity { get; set; }        // Вместимость миски
-        public string OwnerName { get; set; }    // Имя владельца миски
-
-        // Конструктор без параметров для сериализации
-        public Bowl()
-        {
-        }
-
-        // Конструктор для создания экземпляра миски
-        public Bowl(FoodType foodType, int capacity, string ownerName)
-        {
-            BowlFood = foodType;
-            CurrentAmount = 0;
-            Capacity = capacity;
-            OwnerName = ownerName;
-        }
-
-        // Метод для добавления еды в миску
-        public void AddFood(int amount)
-        {
-            // Вычисляем оставшееся свободное место в миске
-            int spaceLeft = Capacity - CurrentAmount;
-
-            // Проверяем, достаточно ли места для добавления указанного количества еды
-            if (amount <= spaceLeft)
-            {
-                // Добавляем еду в миску и логируем событие
-                CurrentAmount += amount;
-                Logger.Log($"Добавлено {amount} еды в миску {OwnerName}.");
-            }
-            else
-            {
-                // Логируем событие о том, что миска не может вместить столько еды
-                Logger.Log($"Миска {OwnerName} не может вместить столько еды. Максимальная вместимость: {Capacity}.");
-            }
-        }
-    }
-
     // Класс, представляющий льва
     public class Lion : Animal
     {
@@ -440,6 +395,51 @@
         public override void Move()
         {
             Logger.Log($"{Name} мчится сквозь джунгли.");
+        }
+    }
+
+    // Класс, представляющий миску для еды животного
+    [Serializable]
+    public class Bowl
+    {
+        // Свойства миски
+        public FoodType BowlFood { get; set; }   // Тип пищи в миске
+        public int CurrentAmount { get; set; }   // Текущее количество еды в миске
+        public int Capacity { get; set; }        // Вместимость миски
+        public string OwnerName { get; set; }    // Имя владельца миски
+
+        // Конструктор без параметров для сериализации
+        public Bowl()
+        {
+        }
+
+        // Конструктор для создания экземпляра миски
+        public Bowl(FoodType foodType, int capacity, string ownerName)
+        {
+            BowlFood = foodType;
+            CurrentAmount = 0;
+            Capacity = capacity;
+            OwnerName = ownerName;
+        }
+
+        // Метод для добавления еды в миску
+        public void AddFood(int amount)
+        {
+            // Вычисляем оставшееся свободное место в миске
+            int spaceLeft = Capacity - CurrentAmount;
+
+            // Проверяем, достаточно ли места для добавления указанного количества еды
+            if (amount <= spaceLeft)
+            {
+                // Добавляем еду в миску и логируем событие
+                CurrentAmount += amount;
+                Logger.Log($"Добавлено {amount} еды в миску {OwnerName}.");
+            }
+            else
+            {
+                // Логируем событие о том, что миска не может вместить столько еды
+                Logger.Log($"Миска {OwnerName} не может вместить столько еды. Максимальная вместимость: {Capacity}.");
+            }
         }
     }
 
